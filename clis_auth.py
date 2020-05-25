@@ -17,6 +17,8 @@ def login(driver: webdriver.Chrome, username, password):
         elem = driver.find_element_by_tag_name("button")
         elem.send_keys(Keys.RETURN)
 
-        tries += 1
+        tries -= 1
         if "login" not in driver.current_url:
-            break
+            return True
+    
+    return False

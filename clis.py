@@ -59,7 +59,9 @@ def main():
     # Login to CLIS
     print("\nProses login...")
     password = args["username"] if args["password"] is None else args["password"]
-    login(driver, args["username"], password)
+    if not login(driver, args["username"], password):
+        print("Tidak dapat login ke sistem.")
+        exit(0)
 
     # Process here
     if args["mode"] == "master":
