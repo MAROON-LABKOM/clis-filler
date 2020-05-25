@@ -1,5 +1,7 @@
-import urllib.request
-import os.path
+import os
+
+from urllib import request
+from zipfile import ZipFile
 
 def print_report(success_count, failed_count, total, failed_list):
     # Print report
@@ -18,6 +20,9 @@ def check_webdriver():
     pass
 
 def download_webdriver():
-    url = "https://chromedriver.storage.googleapis.com/80.0.3987.16/chromedriver_win32.zip"
-    urllib.request.urlretrieve(url, r"bin\\chromedriver.exe")
+    url = "https://chromedriver.storage.googleapis.com/83.0.4103.39/chromedriver_win32.zip"
+    request.urlretrieve(url, r"bin\\chromedriver.zip")
+
+    with ZipFile(r"bin\\chromedriver.zip", 'r') as zipObj:
+        zipObj.extractall('bin')
     pass
