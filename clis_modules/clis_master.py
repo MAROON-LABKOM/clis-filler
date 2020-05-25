@@ -64,14 +64,8 @@ class ClisMasterStudent():
 
             if "Failed!" in driver.page_source or "Warning!" in driver.page_source:
                 error_message = driver.find_element_by_xpath('//div/div[@role="alert"]').text
-                success = 0
-                message = "{0}: {1}".format(npm, error_message[2:])
-                return success, message
+                return 0, "{0}: {1}".format(npm, error_message[2:])
             else:
-                success = 1
-                message = ""
-                return success, message
+                return 1, ""
         except Exception:
-            success = 0
-            message = "Failed to process: {0}".format(npm)
-            return success, message
+            return 0, "Failed to process: {0}".format(npm)
